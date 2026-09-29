@@ -8,10 +8,14 @@ This repository holds the project plan, research notes, and reusable `remaster-c
 
 This keeps the core's history independent of PPSSPP while allowing the adapter to follow PPSSPP's own source tree and build system. The build integration between the two repositories will be decided after inspecting the current texture pipeline, as Milestone 0 requires.
 
+The initial PPSSPP checkout is at `b9c5b28b8f69a78a18bdf381fb4d34b703d21e97` (recorded on 2026-09-29). Its local development branch is `ai-remaster`; the official remote is named `upstream`. Neither repository has a hosted project remote yet.
+
 ## First checkout
 
 ```sh
 git clone --recurse-submodules https://github.com/hrydgard/ppsspp.git ppsspp
+git -C ppsspp remote rename origin upstream
+git -C ppsspp switch -c ai-remaster b9c5b28b8f69a78a18bdf381fb4d34b703d21e97
 ```
 
 If `ppsspp/` already exists, update its submodules with:
