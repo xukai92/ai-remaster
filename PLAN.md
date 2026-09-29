@@ -804,13 +804,13 @@ Upstream PPSSPP SHA: b9c5b28b8f69a78a18bdf381fb4d34b703d21e97
 PPSSPP branch: ai-remaster (local)
 Project branch: main
 Build status: Unmodified Debug Linux SDL build and UnitTest executable pass.
-Tests: PPSSPPUnitTest all passed 60 tests; no rendered fixture test yet.
+Tests: PPSSPPUnitTest all passed 60 tests; synthetic fixture rendered and repeated screenshot matched byte for byte.
 Current milestone: 0, with standalone core work beginning in parallel after source reconnaissance.
-Completed: Upstream checkout, reproducible baseline build, texture pipeline notes, validation protocol.
-Blocked: None for source work. Rendering baseline needs a built legal fixture and display/headless run.
+Completed: Upstream checkout, reproducible baseline build, texture pipeline notes, validation protocol, functional software-renderer fixture baseline.
+Blocked: None for source work. Vulkan and frame-time baselines need a display session and Release build.
 Architecture deviations: Same-session generated replacement requires explicit owner-thread publication; cached misses and pack scanning prevent file-only hot activation.
 Known bugs: None in project code; no production integration exists yet.
-Next concrete task: Build and render the synthetic fixture, record baseline screenshot/metrics, then test the standalone fake core.
+Next concrete task: Finish core fake-backend tests, then integrate a narrow capture/replacement smoke path using the fixture.
 Benchmark notes: No frame-time measurements yet; current shell has no display.
 ```
 
