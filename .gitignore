@@ -1,0 +1,9 @@
+# Local upstream emulator checkout and build output.
+/ppsspp/
+/build/
+/build-*/
+
+# Local editor and system files.
+.DS_Store
+.idea/
+.vscode/
