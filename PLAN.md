@@ -794,3 +794,24 @@ Use this exact operational objective:
 > Build current upstream PPSSPP unmodified, inspect the texture decoding/replacement path, and produce `docs/remaster-ppsspp-notes.md` identifying the exact current hook points for (1) receiving stable texture identity plus decoded source pixels and (2) publishing an asynchronously generated cached replacement through the least invasive existing replacement mechanism. Do not add ML or production integration code yet. Record the PPSSPP commit SHA, relevant source files/classes/functions, thread/lifetime constraints, and any risks that invalidate assumptions in `SPEC.md`.
 
 That reconnaissance is the highest-leverage next step and prevents the rest of the project from being built around stale assumptions.
+
+---
+
+# Current handoff status (2026-09-29)
+
+```text
+Upstream PPSSPP SHA: b9c5b28b8f69a78a18bdf381fb4d34b703d21e97
+PPSSPP branch: ai-remaster (local)
+Project branch: main
+Build status: Unmodified Debug Linux SDL build and UnitTest executable pass.
+Tests: PPSSPPUnitTest all passed 60 tests; no rendered fixture test yet.
+Current milestone: 0, with standalone core work beginning in parallel after source reconnaissance.
+Completed: Upstream checkout, reproducible baseline build, texture pipeline notes, validation protocol.
+Blocked: None for source work. Rendering baseline needs a built legal fixture and display/headless run.
+Architecture deviations: Same-session generated replacement requires explicit owner-thread publication; cached misses and pack scanning prevent file-only hot activation.
+Known bugs: None in project code; no production integration exists yet.
+Next concrete task: Build and render the synthetic fixture, record baseline screenshot/metrics, then test the standalone fake core.
+Benchmark notes: No frame-time measurements yet; current shell has no display.
+```
+
+See `docs/remaster-build.md`, `docs/remaster-ppsspp-notes.md`, and `docs/remaster-validation.md` for evidence and test gates.
