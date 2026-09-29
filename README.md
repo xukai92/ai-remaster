@@ -36,4 +36,4 @@ cmake --build build-remaster
 ctest --test-dir build-remaster --output-on-failure
 ```
 
-On this NixOS host, use `nix-shell -p cmake ninja` for the commands above. The `build-remaster/` output is ignored by Git. This currently tests the deterministic fake backend and bounded scheduler; persistent caching starts in Milestone 2.
+On this NixOS host, use `nix-shell -p cmake ninja libpng` for the commands above. The `build-remaster/` output is ignored by Git. The tests cover the deterministic fake backend, bounded scheduler, PNG cache validation, and reuse across separate processes.

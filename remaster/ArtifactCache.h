@@ -4,18 +4,30 @@
 #include "remaster/TextureIdentity.h"
 
 #include <filesystem>
-#include <string_view>
+#include <cstdint>
+#include <string>
 
 namespace remaster {
 
-// Persistent implementation belongs to Milestone 2.
+inline constexpr uint32_t kCacheSchemaVersion = 1;
+
+struct CacheKey {
+  uint32_t schemaVersion = kCacheSchemaVersion;
+  TextureIdentity texture;
+  std::string modelId;
+  std::string modelVersion;
+  std::string configVersion;
+};
+
+// Unambiguous, deterministic metadata identity; not a filesystem path.
+std::string FormatCacheKey(const CacheKey &key);
+
 class ArtifactCache {
 public:
   virtual ~ArtifactCache() = default;
-  virtual bool Lookup(const TextureIdentity &id, std::string_view modelId,
-                      std::filesystem::path *artifact) = 0;
-  virtual bool StoreAtomically(const TextureIdentity &id, std::string_view modelId,
-                               const OwnedImage &image,
+  // Lookup validates metadata, size, checksum, and PNG decode before returning.
+  virtual bool Lookup(const CacheKey &key, std::filesystem::path *artifact) = 0;
+  virtual bool StoreAtomically(const CacheKey &key, const OwnedImage &image,
                                std::filesystem::path *artifact) = 0;
 };
 
