@@ -1,0 +1,6 @@
+*.elf
+*.o
+*.PBP
+*.SFO
+*.prx
+output/
