@@ -25,3 +25,15 @@ git -C ppsspp submodule update --init --recursive
 ```
 
 The first implementation task is the PPSSPP baseline build and texture pipeline reconnaissance described at the end of [PLAN.md](PLAN.md). Do not commit game assets or model weights without checking their redistribution terms.
+
+## Standalone core tests
+
+The emulator-independent core can be built and tested without PPSSPP:
+
+```sh
+cmake -S remaster -B build-remaster -G Ninja
+cmake --build build-remaster
+ctest --test-dir build-remaster --output-on-failure
+```
+
+On this NixOS host, use `nix-shell -p cmake ninja` for the commands above. The `build-remaster/` output is ignored by Git. This currently tests the deterministic fake backend and bounded scheduler; persistent caching starts in Milestone 2.

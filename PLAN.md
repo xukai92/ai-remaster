@@ -805,12 +805,12 @@ PPSSPP branch: ai-remaster (local)
 Project branch: main
 Build status: Unmodified Debug Linux SDL build and UnitTest executable pass.
 Tests: PPSSPPUnitTest all passed 60 tests; synthetic fixture rendered and repeated screenshot matched byte for byte.
-Current milestone: 0, with standalone core work beginning in parallel after source reconnaissance.
-Completed: Upstream checkout, reproducible baseline build, texture pipeline notes, validation protocol, functional software-renderer fixture baseline.
+Current milestone: 1 complete; Milestone 0 performance baseline remains open.
+Completed: Upstream checkout, reproducible baseline build, texture pipeline notes, validation protocol, functional software-renderer fixture baseline, standalone fake core with bounded scheduler and tests.
 Blocked: None for source work. Vulkan and frame-time baselines need a display session and Release build.
 Architecture deviations: Same-session generated replacement requires explicit owner-thread publication; cached misses and pack scanning prevent file-only hot activation.
 Known bugs: None in project code; no production integration exists yet.
-Next concrete task: Finish core fake-backend tests, then integrate a narrow capture/replacement smoke path using the fixture.
+Next concrete task: Implement the versioned persistent cache (Milestone 2), then integrate a narrow capture/replacement smoke path using the fixture.
 Benchmark notes: No frame-time measurements yet; current shell has no display.
 ```
 
